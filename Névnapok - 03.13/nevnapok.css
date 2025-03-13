@@ -1,0 +1,44 @@
+::placeholder {
+  text-align: center;
+}
+body {
+  background-color: #171717;
+  font-family: "Ubuntu Mono", monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  min-height: 100%;
+  color: #fff;
+}
+input {
+  background-color: #171717;
+  color: #fff;
+  font-family: "Ubuntu Mono", monospace;
+  color-scheme: dark;
+}
+#form-div {
+  background-color: #1f1f1f;
+  border: solid 10px #272727;
+  padding: 20px;
+  border-radius: 10px;
+  /*box-shadow: 0 0 50px rgba(0, 0, 0, 1);*/
+  text-align: center;
+  color: #fff;
+  width: 400px;
+  max-width: 90vw;
+}
+label {
+  font-size: larger;
+}
+label:hover {
+  text-decoration: underline;
+}
+#submit-btn {
+  border-radius: 15px;
+  height: 5vh;
+  width: 5vw;
+  font-size: larger;
+  font-weight: 1000;
+}
