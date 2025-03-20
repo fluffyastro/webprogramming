@@ -35,7 +35,7 @@ label {
 label:hover {
   text-decoration: underline;
 }
-#submit-btn {
+.submit-btn {
   border-radius: 15px;
   height: 5vh;
   width: 5vw;
