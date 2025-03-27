@@ -1,4 +1,5 @@
-honapok = new Array(13);
+let honapok = new Array(13);
+const ev = new Date().getFullYear();
 
 honapok[1] = new Array(
   "",
@@ -456,14 +457,74 @@ honapok[12] = new Array(
   "Szilveszter"
 );
 
+const sznapok = {
+"Bakos Dominik":"2007.11.20.",
+"Chlebik Krisztofer Benjámin":"2007.09.28.",
+"Debreczeni Michael":"2006.11.07.",
+"Farkas Máté Csanád":"2007.05.10.",
+"Földi Roland":"2008.02.13.",
+"Garaba Kornél":"2008.07.22.",
+"Gyurik Áron":"2007.08.03.",
+"Halmai Valentin":"2006.09.25.",
+"Nagy Álmos Botond":"2008.01.18.",
+"Pintér Gergő Ádám":"2007.11.05.",
+"Rátkai Krisztián Bence":"2007.01.06.",
+"Tóth Mór":"2008.08.09."
+};
 
+const dateInput = document.getElementById("date");
+const nameInput = document.getElementById("name");
+const plusName = document.getElementById("plus-name");
+const submitBtn = document.getElementById("submit");
+const szulnapSubmit = document.getElementById("szulnap-submit");
+const sznapDate = document.getElementById("szulnap-date");
+const actual = document.getElementById("actual");
+const sznapos = document.getElementById("sznapos");
 
-// nem tudom mit kene kezdeni :-(
+const today = new Date();
+dateInput.value =  today.getFullYear().toString() + '-' + String(today.getMonth() + 1).padStart(2, 0) + '-' + String(today.getDate()).padStart(2, 0);
+const splitted = dateInput.value.split("-");
+const nev = honapok.at(splitted[1]).at(splitted[2]);
+plusName.innerText = nev + " névnap(ok) vannak.";
 
-let aktualis_nevnap = honapok;
-
-function gomb() {
-  while (true) {
-    alert("nem működik btw :3");
+Object.keys(sznapok).forEach((nev)=>{
+  if(dateInput.value == sznapok[nev].replaceAll(".", "-")){
+    sznapos.value = nev;
   }
-}
+});
+
+submitBtn.addEventListener("click",(e)=>{
+
+  honapok.forEach((honap)=>{
+    if(nameInput.value.trim() == ""){
+      const splitted = dateInput.value.split("-");
+      const nev = honapok.at(splitted[1]).at(splitted[2]);
+      plusName.innerText = nev + " névnapok vannak.";
+    }else{
+    honap.forEach((nev)=>{
+      if(String(nev).includes(nameInput.value)){
+        dateInput.value =  today.getFullYear().toString() + '-' + String(honapok.findIndex(x => x ==honap)).padStart(2, 0) + '-' + String(honap.findIndex(x => x == nev) + 1).padStart(2, 0);
+        if(String(nev).length > nameInput.value.length){
+          plusName.innerText = nev + " névnapok vannak.";
+        }
+      }
+    });
+  }
+  });
+});
+
+szulnapSubmit.addEventListener("click",(e)=>{
+
+  Object.keys(sznapok).forEach((nev)=>{
+    const splitted = sznapok[nev].split("."); 
+    if(splitted[1] == sznapDate.value.split("-")[1] && splitted[2] == sznapDate.value.split("-")[2] ){
+      console.log("Hi")
+      sznapos.value = nev + " a " + String( parseInt(sznapDate.value.split("-")[0]) - parseInt(splitted[0])) + ". évét tölti.";
+    }
+  });
+});
+
+actual .addEventListener("click", (e) => {
+  const today = new Date();
+  plusName.innerText = honapok.at(today.getMonth() + 1).at(today.getDate());
+});

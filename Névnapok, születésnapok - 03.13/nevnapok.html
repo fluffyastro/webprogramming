@@ -5,28 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025. 03. 13.</title>
     <link rel="stylesheet" href="nevnapok.css">
-    <script src="nevnapok.js"></script>
+    <script defer src="nevnapok.js"></script>
 </head>
 <body>
     <h1>Névnapok keresése</h1>
     <div id="form-div">
-        <h2>Keressen meg névnapot!</h2><br>
-        <form>
-            <label>Írjon be egy nevet!</label><br><br>
-            <input type="text" id="nev-kereso" placeholder="pl. Auróra"><br><br>
-            <label>írjon be egy dátumot!</label><br><br>
-            <input type="date" placeholder="Date"><br><br>
-            <label></label><br><br>
-            <input type="text"><br><br>
-            <input type="submit" class="submit-btn" onclick="gomb()"><br><br><br><br>
-            <h2>Születésnapost keresne a csoportunkból?<br> Azt is megteheti!</h2><br>
+        <h2>Keressen meg névnapot!</h2>
+        <form id="nevnap">
+           <div>
+                <label>Írjon be egy nevet!</label>
+                <input type="text" id="name" placeholder="pl. Auróra">
+                <input type="date" id="date">
+           </div>
+            <div id="plus-name"></div>
+            <div id="btns">
+                <button type="button" id="submit" class="submit" >Keres</button>
+                <button type="button" id="actual" class="submit" >Aktuális névnap</button>
+            </div>
+        </form>
+            <h2>Születésnapost keresne a csoportunkból?<br> Azt is megteheti!</h2>
             <form>
-                <label>Írjon be egy dátumot!</label><br><br>
-                <input type="date"><br><br>
-                <input type="submit" class="submit-btn" onclick="gomb()"><br><br>
+                <label>Írjon be egy dátumot!</label>
+                <input type="text" id="sznapos">
+                <input type="date" id="szulnap-date">
+                <button type="button" id="szulnap-submit" class="submit" >Keres</button>
             </form>
             <p id="nem"></p>
-        </form>
     </div>
 </body>
 </html>
